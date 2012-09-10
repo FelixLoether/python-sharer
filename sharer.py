@@ -4,15 +4,18 @@ import requests
 import urllib
 
 
-class OAuthSharer(object):
+class AbstractSharer(object):
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def send(self, message, **kw):
         pass
 
+
+class OAuthSharer(AbstractSharer):
     def __init__(self, consumer_key=None, consumer_secret=None,
                  access_token=None, access_token_secret=None):
+        super(OAuthSharer, self).__init__()
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
         self.access_token = access_token
@@ -50,7 +53,7 @@ class TwitterSharer(OAuthSharer):
         return request.status == 200
 
 
-class FacebookFeedSharer(object):
+class FacebookFeedSharer(AbstractSharer):
     def __init__(self, feed_id=None, access_token=None):
         super(FacebookFeedSharer, self).__init__()
         self.feed_id = feed_id
@@ -67,8 +70,9 @@ class FacebookFeedSharer(object):
         return request.status_code == 200
 
 
-class MultiSharer(object):
+class MultiSharer(AbstractSharer):
     def __init__(self, **kw):
+        super(MultiSharer, self).__init__()
         self.sharers = {}
         self.add_sharers(**kw)
 
