@@ -26,6 +26,10 @@ setup(
         'social medias.'
     ),
     long_description=open('README.rst').read(),
+    install_requires=[
+        'oauth2==1.5.211',
+        'requests==0.14.0',
+    ],
     packages=['sharers'],
     platforms='any',
     cmdclass={'test': PyTest},
