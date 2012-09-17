@@ -12,5 +12,5 @@ class MultiSharer(AbstractSharer):
             self.sharers[key] = val
 
     def send(self, *args, **kw):
-        for name, sharer in self.sharers.iteritems():
+        for sharer in self.sharers.itervalues():
             sharer.send(*args, **kw)
