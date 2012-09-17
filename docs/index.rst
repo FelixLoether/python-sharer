@@ -110,6 +110,11 @@ API Reference
     :param kw:
         Sharers and names to share to.
 
+    .. attribute:: sharers
+
+        A dictionary containing all the sharers the multi sharer sends messages
+        to. Keys are the names of the sharers and values the sharer objects.
+
     .. method:: add_sharers(**kw)
 
         Adds sharers to share to. Arguments like in the initializer.
