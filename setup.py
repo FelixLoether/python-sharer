@@ -17,7 +17,7 @@ class PyTest(Command):
 
 setup(
     name='python-sharer',
-    version='0.1.1',
+    version='0.2.0',
     url='http://github.com/FelixLoether/python-sharer',
     author='Oskari Hiltunen',
     author_email='python-sharer@loethr.net',
