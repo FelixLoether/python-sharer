@@ -124,6 +124,21 @@ API Reference
         Calls each sharer's :meth:`send` method with the arguments given to
         this function.
 
+        If a keyword argument whose name is the same as that of a sharer,
+        said keyword argument's value's thruthiness will be used for
+        whether or not the message should be sent to said sharer.
+
+        For example if the keyword arguments are ``{'hashtag': '#tag',
+        'facebook': False}`` and your multisharer has two sharers, named
+        facebook and twitter, the facebook sharer's ``send()`` method will
+        *not* be called, and the twitter sharer will be called with keyword
+        arguments ``{'hashtag': '#tag', 'facebook': False}``.
+
         :param message:
             Message to share.
         :type message: string
+        :param kw: Keyword arguments to be passed to the sharers.
+        :return:
+            A dictionary containing the names of the services whose
+            ``send()`` methods were invoked and their return values, for
+            example ``{'facebook': False, 'twitter': True}``.
