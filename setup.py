@@ -30,7 +30,7 @@ setup(
         'oauth2==1.5.211',
         'requests==0.14.0',
     ],
-    packages=['sharers'],
+    packages=['sharer'],
     platforms='any',
     cmdclass={'test': PyTest},
     classifiers=[
