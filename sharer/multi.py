@@ -13,7 +13,8 @@ class MultiSharer(AbstractSharer):
 
     def send(self, *args, **kw):
         services = kw.pop('_services', {})
+        results = {}
         for name, sharer in self.sharers.iteritems():
             if services.get(name, True):
-                services[name] = sharer.send(*args, **kw)
-        return services
+                results[name] = sharer.send(*args, **kw)
+        return results
