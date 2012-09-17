@@ -12,9 +12,8 @@ class MultiSharer(AbstractSharer):
             self.sharers[key] = val
 
     def send(self, *args, **kw):
-        services = kw.pop('_services', {})
         results = {}
         for name, sharer in self.sharers.iteritems():
-            if services.get(name, True):
+            if kw.get(name, True):
                 results[name] = sharer.send(*args, **kw)
         return results
